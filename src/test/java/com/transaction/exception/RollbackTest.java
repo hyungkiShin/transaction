@@ -3,6 +3,7 @@ package com.transaction.exception;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,21 @@ class RollbackTest {
 
     @Test
     void runTimeException() {
-        service.runtimeException();
+        Assertions.assertThatThrownBy
+                (() -> service.runtimeException()).isInstanceOf(RuntimeException.class);
+//        service.runtimeException();
+    }
+
+    @Test
+    void checkedException() {
+        Assertions.assertThatThrownBy
+                (() -> service.checkedException()).isInstanceOf(MyException.class);
+    }
+
+    @Test
+    void rollbackFor() {
+        Assertions.assertThatThrownBy
+                (() -> service.rollbackFor()).isInstanceOf(MyException.class);
     }
 
     @TestConfiguration

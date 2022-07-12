@@ -25,18 +25,20 @@ logging:
   level:
     org:
       springframework:
-      # Spring transaction 확인용
-        transaction:
-          interceptor: trace
-        jdbc:
-          dataSourceTransactionManager: debug
-        orm:
-          jpa:
-            jpaTransactionManager: debug
+          transaction:
+            interceptor: trace
+          jdbc:
+            dataSourceTransactionManager: debug
+          orm:
+            jpa: debug
       # DB 인자 확인용
       hibernate:
+        SQL:
+          debug
         type:
           descriptor:
             sql: trace
+            BasicBinder: debug
         resource:
           transaction: debug
+
