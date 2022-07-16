@@ -33,12 +33,11 @@ logging:
             jpa: debug
       # DB 인자 확인용
       hibernate:
-        SQL:
-          debug
+#        SQL:
+#          debug
         type:
           descriptor:
             sql: trace
-            BasicBinder: debug
         resource:
           transaction: debug
 
